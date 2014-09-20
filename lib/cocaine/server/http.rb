@@ -80,8 +80,8 @@ module Cocaine::RackInterface
 		
         env = Hash[*headers.flatten]
         parsed_url = URI.parse("http://#{env['Host']}#{url}")
-        default_hostname = ENV['HOSTNAME'] || parsed_url.hostname  || 'localhost'
-        default_port = ENV['PORT'] || parsed_url.port || '80'
+        default_hostname = parsed_url.hostname  || 'localhost'
+        default_port =  parsed_url.port || '80'
 		
         env.update({
           "GATEWAY_INTERFACE" => "CGI/1.1",
